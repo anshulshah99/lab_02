@@ -44,12 +44,14 @@ need to set the class attribute to `"POSIXct"`
 
 ```{r}
 z <- seq(0, 3600 * 10, by = 3600)
+attr(x = z, which = "class") <- "POSIXct"
+z
+
 ```
 
 What do you notice about the date-time? If you are unsure, check out
 [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time). A time converter is
 available [here](https://www.epochconverter.com).
-
 
 
 ## Subsetting
@@ -59,6 +61,10 @@ Consider the atomic vector `x`.
 ```{r}
 set.seed(0826) # set seed to ensure reproducibility
 x <- sample(x = c(letters, -15:15), size = 50, replace = TRUE)
+x
+x[x %in% -15:-1]
+x[is.na(as.numeric(x)) %% 3 == 0]
+x <- x[c(TRUE, FALSE)]
 x
 ```
 
